@@ -143,7 +143,7 @@ class Ffmpeg < Formula
 
     if build.with? "tesseract"
       ohai "============="
-      ohai "Note that the default `tesseract` dependency includes limited language support.  To add all tesseract supported languages, just install `tesseract-lang` formula."
+      ohai "The default `tesseract` dependency includes limited language support. To add all supported languages, just install the `tesseract-lang` formula after this completes."
       ohai "============="
     end
 
