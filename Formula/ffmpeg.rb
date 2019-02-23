@@ -141,6 +141,12 @@ class Ffmpeg < Formula
     args << "--enable-libzmq" if build.with? "zeromq"
     args << "--enable-openssl" if build.with? "openssl"
 
+    if build.with? "tesseract"
+      ohai "============="
+      ohai "Note that the default `tesseract` dependency includes limited language support.  To add all tesseract supported languages, just install `tesseract-lang` formula."
+      ohai "============="
+    end
+
     if build.with? "opencore-amr"
       args << "--enable-version3"
       args << "--enable-libopencore-amrnb"
