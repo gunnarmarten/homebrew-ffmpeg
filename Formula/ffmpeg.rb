@@ -141,12 +141,6 @@ class Ffmpeg < Formula
     args << "--enable-libzmq" if build.with? "zeromq"
     args << "--enable-openssl" if build.with? "openssl"
 
-    if build.with? "tesseract"
-      ohai "============="
-      ohai "The default `tesseract` dependency includes limited language support. To add all supported languages, just install the `tesseract-lang` formula after this completes."
-      ohai "============="
-    end
-
     if build.with? "opencore-amr"
       args << "--enable-version3"
       args << "--enable-libopencore-amrnb"
@@ -169,6 +163,13 @@ class Ffmpeg < Formula
     # Build and install additional FFmpeg tools
     system "make", "alltools"
     bin.install Dir["tools/*"].select { |f| File.executable? f }
+
+    if build.with? "tesseract"
+      ohai "============="
+      ohai "The default `tesseract` dependency includes limited language support. To add all supported languages, just install the `tesseract-lang` formula after this completes."
+      ohai "============="
+    end
+
   end
 
   test do
