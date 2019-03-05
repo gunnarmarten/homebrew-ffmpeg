@@ -34,6 +34,7 @@ class Ffmpeg < Formula
   depends_on "aom"
   depends_on "fontconfig"
   depends_on "freetype"
+  depends_on "gnutls"
   depends_on "frei0r"
   depends_on "lame"
   depends_on "libass"
@@ -87,11 +88,16 @@ class Ffmpeg < Formula
     args = %W[
       --prefix=#{prefix}
       --enable-shared
+      --enable-pthreads
+      --enable-version3
       --enable-hardcoded-tables
+      --enable-avresample
       --cc=#{ENV.cc}
       --host-cflags=#{ENV.cflags}
       --host-ldflags=#{ENV.ldflags}
       --enable-gpl
+      --enable-ffplay
+      --enable-gnutls
       --enable-libaom
       --enable-libmp3lame
       --enable-libopus
@@ -101,10 +107,12 @@ class Ffmpeg < Formula
       --enable-libvpx
       --enable-libx264
       --enable-libx265
+      --enable-lzma
       --enable-libfontconfig
       --enable-libfreetype
       --enable-frei0r
       --enable-libass
+      --enable-videotoolbox
       --disable-libjack
       --disable-indev=jack
     ]
